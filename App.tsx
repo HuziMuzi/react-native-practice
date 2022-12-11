@@ -1,14 +1,6 @@
 import React from "react";
-import { StatusBar, View } from "react-native";
-import { HomeScreen } from "./screens/Home";
-import { FullPostScreen } from "./screens/FullPost";
+import { Navigation } from "./screens/Navigation";
 
 export const App = () => {
-  return (
-    <View>
-      <HomeScreen/>
-      {/*<FullPostScreen/>*/}
-      <StatusBar />
-    </View>
-  );
+  return <Navigation/>
 };

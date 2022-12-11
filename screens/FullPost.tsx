@@ -5,13 +5,15 @@ import { TData } from "./Home";
 import axios from "axios/index";
 import { Loading } from "../components/Loading";
 
-export const FullPostScreen = (id: string) => {
+export const FullPostScreen = ({ route, navigation } :{ route: any, navigation: any}) => {
 
   const [data, setData] = useState<TData>({} as TData);
   const [isLoading, setIsLoading] = useState(true);
+  const {id, title} = route.params
+
 
   useEffect(() => {
-
+    navigation.setOptions({title})
     setIsLoading(true);
     axios.get(`https://62a1085b356d093c4c40443b.mockapi.io/posts/${id}`)
       .then((res) => {
@@ -23,6 +25,8 @@ export const FullPostScreen = (id: string) => {
       setIsLoading(false);
     });
   }, []);
+
+
 
   if (isLoading) return <Loading/>
 

@@ -4,7 +4,6 @@ import {
   Alert,
   FlatList,
   RefreshControl,
-  StatusBar,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -21,7 +20,7 @@ export type TData = {
 
 
 
-export const HomeScreen = () => {
+export const HomeScreen = ({ navigation} : { navigation: any}) => {
 
   const [items, setItems] = useState<TData[]>();
   const [isLoading, setIsLoading] = useState(true);
@@ -53,7 +52,7 @@ export const HomeScreen = () => {
         refreshControl={<RefreshControl refreshing={isLoading} onRefresh={fetchPosts} />}
         data={items}
         renderItem={({ item }) => (
-          <TouchableOpacity >
+          <TouchableOpacity onPress={() => navigation.navigate('FullPost', {id: item.id, title: item.title})} >
             <Post
               title={item.title}
               imageUrl={item.imageUrl}
@@ -61,7 +60,6 @@ export const HomeScreen = () => {
           </TouchableOpacity>
         )} />
 
-      <StatusBar animated={true} />
     </View>
   );
 };

@@ -10,6 +10,15 @@ export type TPropsPost = {
 }
 
 
+const truncateTitle = (str: string) => {
+  if (str.length > 50) {
+    return str.substring(0, 50) + '...'
+  }
+
+
+  return str
+}
+
 
 export const Post = ({title, imageUrl, createdAt} : TPropsPost) => {
   return (
@@ -21,8 +30,8 @@ export const Post = ({title, imageUrl, createdAt} : TPropsPost) => {
           }}
         />
         <PostDetails>
-          <PostTitle>{title}</PostTitle>
-          <PostDate>{createdAt}</PostDate>
+          <PostTitle>{truncateTitle(title)}</PostTitle>
+          <PostDate>{new Date(createdAt).toLocaleDateString()}</PostDate>
         </PostDetails>
       </PostContainer>
     </>
