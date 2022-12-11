@@ -1,5 +1,5 @@
 import React from "react";
-import { StatusBar } from "react-native";
+// @ts-ignore
 import styled from "styled-components/native";
 
 
@@ -25,13 +25,6 @@ export const Post = ({title, imageUrl, createdAt} : TPropsPost) => {
           <PostDate>{createdAt}</PostDate>
         </PostDetails>
       </PostContainer>
-      <StatusBar
-        animated={true}
-        hidden={false}
-        networkActivityIndicatorVisible={true}
-        backgroundColor="#61dafb"
-
-      />
     </>
 
   );
